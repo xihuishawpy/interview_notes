@@ -20,11 +20,9 @@ SVM，Support Vector Machine，它是一种二分类模型，其基本模型定�
   
     $T=\left\{\left(x_{1}, y_{1}\right),\left(x_{2}, y_{2}\right), \ldots,\left(x_{n}, y_{n}\right)\right\}$
 
- - 学习得到的超平面：
-  $w^{* T} x+b^{*}=0$
+ - 学习得到的超平面：$w^{* T} x+b^{*}=0$
 
- - 相应的分类决策函数：
-  $f(x)=\operatorname{sign}\left(w^{* T} x+b^{*}\right)$
+ - 相应的分类决策函数：$f(x)=\operatorname{sign}\left(w^{* T} x+b^{*}\right)$
 
  - SVM基本思想：<u>间隔最大化，不仅要讲正负类样本分开，而且对最难分的点（离超平面最近的点）也要有足够大的确信度将他们分开。</u>
 
