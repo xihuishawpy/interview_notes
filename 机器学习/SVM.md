@@ -4,7 +4,7 @@
 
 ## 1. SVM直观解释
 
-SVM，Support Vector Machine，它是一种二分类模型，其基本模型定义为特征空间上的间隔最大的线性分类器，间隔最大使它有别于感知机；其还包括**核技巧**，这使它成为实质上的非线性分类器。其学习策略就是间隔最大化，可形式化为一个求解凸二次规划的问题。其学习算法就是求解凸二次规划的最优化算法。
+SVM，Support Vector Machine，它是一种二分类模型，其基本模型定义为特征空间上的间隔最大的线性分类器，间隔最大使它有别于感知机；其还包括**核技巧**，这使它成为实质上的非线性分类器。其学习策略就是`间隔最大化`，可形式化为一个`求解凸二次规划的问题`。其学习算法就是求解凸二次规划的最优化算法。
 
 这里涉及了几个概念，**二分类模型**，**线性分类器**，**间隔最大化**，**凸二次规划问题**。
 
@@ -19,7 +19,7 @@ SVM，Support Vector Machine，它是一种二分类模型，其基本模型定�
  - 线性可分训练集：$T=\left\{\left(x_{1}, y_{1}\right),\left(x_{2}, y_{2}\right), \ldots,\left(x_{n}, y_{n}\right)\right\}$
  - 学习得到的超平面：$w^{* T} x+b^{*}=0$
  - 相应的分类决策函数：$f(x)=\operatorname{sign}\left(w^{* T} x+b^{*}\right)$
- - SVM基本思想：间隔最大化，不仅要讲正负类样本分开，而且对最难分的点（离超平面最近的点）也要有足够大的确信度将他们分开。
+ - SVM基本思想：<u>间隔最大化，不仅要讲正负类样本分开，而且对最难分的点（离超平面最近的点）也要有足够大的确信度将他们分开。</u>
 
 
 ![在这里插入图片描述](img/SVM/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1NTQ3Mjgx,size_16,color_FFFFFF,t_70.png)![在这里插入图片描述](img/SVM/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1NTQ3Mjgx,size_16,color_FFFFFF,t_70-20211031095607863-5645369.png)
