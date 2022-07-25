@@ -59,7 +59,7 @@ $$
 e_{t}=P\left(G_{t}\left(x_{i}\right) \neq y_{i}\right)=\sum_{i=1}^{m} w_{t i} I\left(G_{t}\left(x_{i}\right) \neq y_{i}\right)
 $$
 
-  - 计算弱分类器 Gt(x) 在最终分类器中的系数(即所占权重)
+  - **计算弱分类器 Gt(x) 在最终分类器中的系数**(即所占权重)
   
 $$
 \alpha_{t}=\frac{1}{2} \ln \frac{1-e_{t}}{e_{t}}
@@ -94,21 +94,30 @@ $$
 ## 3. 算法面试题
 ### 3.1 Adaboost分类模型的学习器的权重系数$\alpha$怎么计算的？
 
+答：log（分类正确的样本权重之和 / 分类错误的样本权重之和）
+
+![20220725132857](https://cdn.jsdelivr.net/gh/xihuishawpy/PicBad@main/blogs/pictures/20220725132857.png)
+
 Adaboost是前向分步加法算法的特例，分类问题的时候认为损失函数指数函数。
 
 1. 当基函数是分类器时，Adaboost的最终分类器是：
+   
    $$
    f(x)=\sum_{m-1}^{M}{\alpha_mG_m(x)}=f_{m-1}(x)+{\alpha_mG_m(x)}
    $$
    
 2. 目标是使前向分步算法得到的$\alpha$和$G_m(x)$使$f_m(x)$在训练数据集T上的指数损失函数最小，即
+   
    $$
    (\alpha, G_m(x))=arg min_{\alpha, G}\sum_{i=1}^{N}exp[-y_i(f_{m-1}(x_i)+\alpha G(x_i))]
    $$
+
    其中，$\hat{w}_{mi}=exp[-y_i f_{m-1}(x_i)].$为了求上式的最小化，首先计算$G_m^*(x)$,对于任意的$\alpha >0$,可以转化为下式：
+   
    $$
    G_{m}^*=argmin_{G}\sum_{i=1}^{N}\hat{w}_{mi}I(y_i \neq G(x_i))
    $$
+
    之后求$\alpha_m^*$,将上述式子化简，得到
 
 $$
@@ -117,10 +126,13 @@ $$
 $$
 
 将已经求得的$G_m^*(x)$带入上式面，对$\alpha$求导并等于0，得到最优的$\alpha$.
+
 $$
 a_m^*=\frac{1}{2} log{\frac{1-e_m}{e_m}}
 $$
+
 其中$e_m$是分类误差率:
+
 $$
 e_m=\frac{\sum_{i=1}^{N}\hat{w}_{mi}I(y_i \neq G_m(x_i))}{\sum_{i=1}^{N}\hat{w}_{mi}}=\sum_{i=1}^{N}\hat{w}_{mi}I(y_i \neq G_m(x_i))
 $$
