@@ -99,8 +99,11 @@ F_1=\frac{2*P*R}{P+R}  \tag{11}
 $$
 
 
-### ROC         
-ROC全称是"受试者工作特征"(Receiver Operating Characteristic)曲线. ROC曲线为 FPR 与 TPR 之间的关系曲线，这个组合以 FPR 对 TPR，即是以代价 (costs) 对收益 (benefits)，显然收益越高，代价越低，模型的性能就越好。 其中ROC曲线的横轴是"假正例率"(False Positive Rate, **FPR**), 纵轴是"真正例率"(True Positive Rate, **TPR**), **注意这里不是上文提高的P和R**. 
+### ROC
+
+ROC全称是"受试者工作特征"(Receiver Operating Characteristic)曲线
+
+ROC曲线为 FPR 与 TPR 之间的关系曲线，这个组合以 FPR 对 TPR，**TPR是收益，FPR是代价**，以代价 (costs) 对收益 (benefits)，显然收益越高，代价越低，模型的性能就越好。 其中ROC曲线的横轴是"假正例率"(False Positive Rate, **FPR**), 纵轴是"真正例率"(True Positive Rate, **TPR**), **注意这里不是上文提高的P和R**. 
 
 - y 轴为真阳性率（TPR）：在所有的正样本中，分类器预测正确的比例（等于Recall）
 
@@ -116,8 +119,9 @@ FPR=\frac{FP}{TN+FP} \tag{13}
 $$
 
 
-现实使用中,一般使用有限个测试样例绘制ROC曲线,此时需要有有限个(真正例率,假正例率)坐标对. 绘图过程如下:
-1. 给定$m^+$个正例和$m^-$个反例,根据学习器预测结果对样例进行排序,然后将分类阈值设为最大,此时真正例率和假正例率都为0,坐标在(0,0)处,标记一个点.
+现实使用中,一般使用有限个测试样例绘制ROC曲线，此时需要有有限个(真正例率,假正例率)坐标对. 绘图过程如下:
+
+1. 给定$m^+$个正例和$m^-$个反例,`根据学习器预测结果对样例进行排序`，然后将分类阈值设为最大,此时真正例率和假正例率都为0，坐标在(0,0)处,标记一个点.
 2. 将分类阈值依次设为每个样本的预测值,即依次将每个样本划分为正例.
 3. 假设前一个坐标点是(x,y),若当前为真正例,则对应坐标为$(x,y+\frac{1}{m^+})$, 若是假正例,则对应坐标为$(x+\frac{1}{m^-}, y)$
 4. 线段连接相邻的点.
@@ -156,7 +160,7 @@ $$
 
 参考：https://tracholar.github.io/machine-learning/2018/01/26/auc.html
 
-### KS Kolmogorov-Smirnov
+### KS(Kolmogorov-Smirnov)
 
 KS值是在模型中用于**区分预测正负样本分隔程度**的评价指标，一般应用于金融风控领域。与ROC曲线相似，ROC是以FPR作为横坐标，TPR作为纵坐标，通过改变不同阈值，从而得到ROC曲线。ks曲线为TPR-FPR，ks曲线的最大值通常为ks值。可以理解TPR是收益，FPR是代价，ks值是收益最大。图中绿色线是TPR、蓝色线是FPR。
 
